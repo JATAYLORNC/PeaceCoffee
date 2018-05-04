@@ -1,8 +1,9 @@
 //----------------------------------------------------------//
 //                                                          //
-//          USE THIS CONTROLLER FOR ALL API ROUTES          //
+//          USE THIS CONTROLLER FOR ALL HTML ROUTES          //
 //                                                          //
 //----------------------------------------------------------//
+
 //define dependencies
 var express = require("express");
 var db = require("../models");
@@ -11,28 +12,11 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
 
-  app.post("/api/member", function(req, res) {
-
-
-  });
-
-  app.post("/api/customer", function(req, res) {
+  app.get("/", function (req, res) {
 
     
-  });
-
-
-  app.put("/api/member/:id", function(req, res) {
-
-    
-  });
-
-  app.delete("api/member/:id", function(req, res) {
-
-
   });
 
   
-
 
 };
