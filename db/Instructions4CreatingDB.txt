@@ -3,8 +3,7 @@ in the seeds scripts.
 
 Run the PeaceCoffee database scripts in the following order:
 
-1.  schema.sql
-2.  userseeds.sql
+1.  userseeds.sql
 2.  productseeds.sql
 3.  memberseeds.sql
 4.  ordersummaryseeds.sql
