@@ -10,11 +10,7 @@ contact_last_name				varchar(50),
  state							varchar(2),
  zip							varchar(8),
  business_phone					varchar(15),
- fax_number						varchar(15),
- constraint fk_product_id
- FOREIGN KEY (product_id) REFERENCES products(product_id)
- on delete cascade
- on update cascade
+ fax_number						varchar(15)
  );
  
 insert into supplier

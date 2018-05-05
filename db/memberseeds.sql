@@ -1,10 +1,6 @@
 create table members
 (member_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 user_id int not null default 0,
-constraint fk_user_id
-foreign key(user_id) REFERENCES users(user_id)
-on delete cascade
-on update cascade,
 company                    varchar(100),
 last_name                    varchar(50),
 first_name                    varchar(50),
@@ -60,6 +56,3 @@ values
 (5, 'Jeffs Coffee Shop', 'Taylor', 'Jeff', '919-566-2398', '919-100-9458', '803 Wilmington Ave',
 'Raleigh', 'NC', '28110', '2014-10-12', '2018-09-15', '2019-10-01', null);
 
-Message Input
-
-Message Gabe, Stephanie Lawrie, Colin Williams, Meleha Levine
