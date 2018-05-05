@@ -11,11 +11,7 @@ create table order_summary
  tax						decimal(10,2),
  sales_total				decimal(10,2),
  paid						decimal(10,2),
- date_paid					date,
- constraint fk_member_id
-FOREIGN KEY (member_id) REFERENCES members(member_id)
-on delete cascade
-on update cascade
+ date_paid					date
  );
  
 insert into order_summary
