@@ -1,24 +1,24 @@
 create table members
- (member_id				int NOT NULL AUTO_INCREMENT PRIMARY KEY,
- user_id 					int not null default 0,
- constraint fk_user_id
- foreign key(user_id) REFERENCES users(user_id)
- on delete cascade
- on update cascade,
- company					varchar(100),
- last_name					varchar(50),
- first_name					varchar(50),
- business_phone				varchar(15),
- fax_number					varchar(15),
- address					varchar(100),
- city						varchar(50),
- state						varchar(2),
- zip						varchar(8),
- membership_start_date		date,
- membership_paid_date       date,
- membership_renewal_date	date,
- membership_end_date		date
- );
+(member_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+user_id int not null default 0,
+constraint fk_user_id
+foreign key(user_id) REFERENCES users(user_id)
+on delete cascade
+on update cascade,
+company                    varchar(100),
+last_name                    varchar(50),
+first_name                    varchar(50),
+business_phone                varchar(15),
+fax_number                    varchar(15),
+address                    varchar(100),
+city                        varchar(50),
+state                        varchar(2),
+zip                        varchar(8),
+membership_start_date        date,
+membership_paid_date       date,
+membership_renewal_date    date,
+membership_end_date        date
+);
 
 insert into members
 (user_id, company, last_name, first_name, business_phone, fax_number, address,
@@ -60,4 +60,6 @@ values
 (5, 'Jeffs Coffee Shop', 'Taylor', 'Jeff', '919-566-2398', '919-100-9458', '803 Wilmington Ave',
 'Raleigh', 'NC', '28110', '2014-10-12', '2018-09-15', '2019-10-01', null);
 
+Message Input
 
+Message Gabe, Stephanie Lawrie, Colin Williams, Meleha Levine
