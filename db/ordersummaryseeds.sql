@@ -1,4 +1,4 @@
- create table order_summary
+create table order_summary
  (order_id				int NOT NULL AUTO_INCREMENT PRIMARY KEY,
  member_id				int not null,
  product_id				int not null,
@@ -41,5 +41,4 @@ insert into order_summary
 tax, sales_total, paid, date_paid)
 values
 (4, 2, 'Normal', 'Received', '2018-05-04', '2018-05-13', 4.50, .45, .30, 5.25, 5.25,'2018-05-04');
-
 
