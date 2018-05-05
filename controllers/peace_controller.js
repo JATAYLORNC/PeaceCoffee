@@ -18,7 +18,7 @@ module.exports = function(app) {
   });
   
   app.get("/homepage", function(req, res) {
-    res.sendFile(path.join(__dirname, "homepage.html"));
+    res.sendFile(path.join(__dirname, "../public/homepage.html"));
   });
   
   
