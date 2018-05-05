@@ -1,14 +1,8 @@
-drop database if exists PeaceCoffee;
-create database PeaceCoffee;
-
-use PeaceCoffee;
-
- create table users
+create table users
  (user_id              int not null auto_increment Primary Key,
  email					 varchar(100) NOT NULL , -- used as login name
   password				 varchar(25) NOT NULL
  );
-
 
 insert into users
 (email, password)
