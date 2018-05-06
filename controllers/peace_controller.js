@@ -37,15 +37,15 @@ module.exports = function(app, passport) {
   });
   
   app.get("/payments", function(req, res) {
-    res.sendFile(path.join(__dirname, "payments.html"));
+    res.sendFile(path.join(__dirname, "../public/payments.html"));
   });
   
   app.get("/inventory", function(req, res) {
-    res.sendFile(path.join(__dirname, "inventory.html"));
+    res.sendFile(path.join(__dirname, "../public/inventory.html"));
   });
   
   app.get("/products", function(req, res) {
-    res.sendFile(path.join(__dirname, "products.html"));
+    res.sendFile(path.join(__dirname, "../public/products.html"));
   });
   
   app.get("*", function(req, res) {

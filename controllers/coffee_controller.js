@@ -7,8 +7,8 @@
 var express = require("express");
 var db = require("../models");
 var path = require("path");
-// var passport = require("../config/passport");
-// var isAuthenticated = require("../config/middleware/isAuthenticated");
+var passport = require("../config/passport");
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // Routes
 // =============================================================
@@ -18,7 +18,8 @@ module.exports = function(app, passport) {
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
+    console.log("coffee_controller line 21 fired", res);
+    // Since we're doing a POST with javas,cript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
     res.json("/members");
