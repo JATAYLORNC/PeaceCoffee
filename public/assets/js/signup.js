@@ -13,6 +13,8 @@ $(document).ready(function() {
   var stateInput = $("#state");
   var zipInput = $("#zip");
 
+  console.log("city", cityInput);
+
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", function(event) {
     event.preventDefault();
@@ -20,6 +22,8 @@ $(document).ready(function() {
       email: emailInput.val().trim(),
       password: passwordInput.val().trim()
     };
+
+    console.log("signup.js line 24 userData", userData);
 
     var memberData = {
       company_name: companyInput.val().trim(),
@@ -32,6 +36,8 @@ $(document).ready(function() {
       state: stateInput.val().trim(),
       zip: zipInput.val().trim()
     }
+
+    console.log("signup.js line 38 memberData", memberData);
 
     if (!userData.email || !userData.password) {
       return;
