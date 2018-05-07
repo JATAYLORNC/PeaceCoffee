@@ -41,7 +41,7 @@ require("./config/passport.js")(passport, db.User);
 // require("./controllers/auth_controller.js")(app);
 
 //sync the models
-db.sequelize.sync({force: true}).then(function() {
+db.sequelize.sync({force: false}).then(function() {
   //listen on port
   app.listen(port, function() {
     console.log("App listening on PORT " + port);
