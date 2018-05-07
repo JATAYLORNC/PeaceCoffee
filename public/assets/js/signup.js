@@ -3,6 +3,15 @@ $(document).ready(function() {
   var signUpForm = $("form.signup");
   var emailInput = $("input#email-input");
   var passwordInput = $("input#password-input");
+  var companyInput = $("#company");
+  var lastNameInput = $("#lname");
+  var firstNameInput = $("#fname");
+  var phoneInput = $("#bphone");
+  var faxInput = $("#fax");
+  var addressInput = $("#address");
+  var cityInput = $("#city");
+  var stateInput = $("#state");
+  var zipInput = $("#zip");
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", function(event) {
@@ -11,6 +20,18 @@ $(document).ready(function() {
       email: emailInput.val().trim(),
       password: passwordInput.val().trim()
     };
+
+    var memberData = {
+      company_name: companyInput.val().trim(),
+      last_name: lastNameInput.val().trim(),
+      first_name: firstNameInput.val().trim(),
+      business_phone: phoneInput.val().trim(),
+      fax_number: faxInput.val().trim(),
+      address: addressInput.val().trim(),
+      city: cityInput.val().trim(),
+      state: stateInput.val().trim(),
+      zip: zipInput.val().trim()
+    }
 
     if (!userData.email || !userData.password) {
       return;
