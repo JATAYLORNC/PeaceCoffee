@@ -38,5 +38,3 @@
 -- (email, password)
 -- values
 -- ('zachrickards@triology.edu', 'zrickards');
-
-
