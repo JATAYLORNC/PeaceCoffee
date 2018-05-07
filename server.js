@@ -1,5 +1,6 @@
 //Requiring necessary npm packages
 var express = require("express");
+require("dotenv").config();
 var bodyParser = require("body-parser");
 var session = require("express-session");
 var passport = require("./config/passport");
@@ -9,10 +10,6 @@ var path = require("path");
 var app = express();
 var port = process.env.PORT || 3000;
 // var exphbs = require("express-handlebars");
-
-require("dotenv").config();
-
-
 
 // Parse application/x-www-form-urlencoded and json
 app.use(bodyParser.urlencoded({ extended: true }));

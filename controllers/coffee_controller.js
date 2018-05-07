@@ -4,8 +4,8 @@
 //                                                          //
 //----------------------------------------------------------//
 //define dependencies
-var db = require("../models");
 var passport = require("../config/passport");
+var path = require("path");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.

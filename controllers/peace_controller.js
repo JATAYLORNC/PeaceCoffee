@@ -5,6 +5,8 @@
 //----------------------------------------------------------//
 
 //define dependencies
+
+var passport = require("../config/passport");
 var path = require("path");
 
 // Requiring our custom middleware for checking if a user is logged in
