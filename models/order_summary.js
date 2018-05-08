@@ -60,16 +60,14 @@ timestamps: false
 
 order_summary.associate = function(models) {
     
-    order_summary.belongsTo(models.members, {
+    order_summary.hasMany(models.products, {
+      onDelete: "cascade"
+    }),
+    order_summary.belongsTo(models.User, {
       foreignKey: {
       allowNull: false
       }
-    }),
-    order_summary.belongsTo(models.products, {
-        foreignKey: {
-        allowNull: false
-        }
-      })
+    })
 
   };
 
