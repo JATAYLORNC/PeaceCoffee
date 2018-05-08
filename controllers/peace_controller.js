@@ -41,9 +41,9 @@ module.exports = function(app) {
     console.log(req.user);
 
     //define object to render to view handlebars
-    var hbsObject = {
-      user: req.user
-    };
+    var hbsObject = req.user;
+
+    console.log(hbsObject)
 
     //render the object to index.handlebars
     res.render("members", hbsObject);
