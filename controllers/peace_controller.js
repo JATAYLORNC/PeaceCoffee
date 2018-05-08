@@ -39,7 +39,16 @@ module.exports = function(app) {
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, function(req, res) {
     console.log(req.user);
-    res.sendFile(path.join(__dirname, "../public/members.html"));
+
+    //define object to render to view handlebars
+    var hbsObject = {
+      user: req.user
+    };
+
+    //render the object to index.handlebars
+    res.render("members", hbsObject);
+
+    // res.sendFile(path.join(__dirname, "../public/members.html"));
   });
 
   // Route for logging user out
