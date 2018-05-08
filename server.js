@@ -9,7 +9,7 @@ var path = require("path");
 //create instance of express server and define port
 var app = express();
 var port = process.env.PORT || 3000;
-// var exphbs = require("express-handlebars");
+var exphbs = require("express-handlebars");
 
 // Parse application/x-www-form-urlencoded and json
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,23 +18,26 @@ app.use(bodyParser.json());
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
-
 // We need to use sessions to keep track of our user's login status
 app.use(session(
+<<<<<<< HEAD
   {
     secret: "keyboard cat",
     resave: true,
     saveUninitialized: true
+=======
+  { 
+    secret: "keyboard cat", 
+    resave: false, 
+    saveUninitialized: false 
+>>>>>>> d8f48456c8d24fe0777d8b5785ac2fe29ccd4a09
   }));
 app.use(passport.initialize());
 app.use(passport.session());
 
 //define engine for handlebars
-// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// app.set("view engine", "handlebars");
-
-//Models
-
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 // Routes
 // =============================================================

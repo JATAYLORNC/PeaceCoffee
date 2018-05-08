@@ -38,3 +38,5 @@
 -- (email, password)
 -- values
 -- ('zachrickards@triology.edu', 'zrickards');
+
+select * from users;

@@ -22,7 +22,7 @@ $(document).ready(function() {
     };
 
     var memberData = {
-      company_name: companyInput.val().trim(),
+      company: companyInput.val().trim(),
       last_name: lastNameInput.val().trim(),
       first_name: firstNameInput.val().trim(),
       business_phone: phoneInput.val().trim(),
@@ -30,26 +30,28 @@ $(document).ready(function() {
       address: addressInput.val().trim(),
       city: cityInput.val().trim(),
       state: stateInput.val().trim(),
-      zip: zipInput.val().trim()
+      zip: zipInput.val().trim(),
     }
 
     if (!userData.email || !userData.password) {
       return;
     }
     // If we have an email and password, run the signUpUser function
-    signUpUser(userData.email, userData.password);
+    signUpUser(userData.email, userData.password, memberData);
     emailInput.val("");
     passwordInput.val("");
+
   });
 
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
-  function signUpUser(email, password) {
+  function signUpUser(email, password, memberData) {
     $.post("/api/signup", {
       email: email,
       password: password
     }).then(function(data) {
-      window.location.replace(data);
+
+      // window.location.replace(data);
       // If there's an error, handle it by throwing up a bootstrap alert
     }).catch(handleLoginErr);
   }
@@ -59,3 +61,21 @@ $(document).ready(function() {
     $("#alert").fadeIn(500);
   }
 });
+
+function postMemberData(memberData, user_id) {
+  $.post("/api/member", {
+    user_id: user_id,
+    company: memberData.company,
+    last_name: memberData.last_name,
+    first_name: memberData.first_name,
+    business_phone: memberData.business_phone,
+    fax_number: memberData.fax_number,
+    address: memberData.address,
+    city: memberData.city,
+    state: memberData.state,
+    zip: memberData.zip,
+  }).then(function(data) {
+    
+    // If there's an error, handle it by throwing up a bootstrap alert
+  }).catch(handleLoginErr);
+}
