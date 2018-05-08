@@ -51,7 +51,9 @@ $(document).ready(function() {
       password: password
     }).then(function(data) {
 
-      postMemberData(memberData);
+      var user_id = data.id;
+
+      postMemberData(memberData, user_id);
 
       window.location.replace(data);
       // If there's an error, handle it by throwing up a bootstrap alert
@@ -64,8 +66,19 @@ $(document).ready(function() {
   }
 });
 
-function postMemberData(memberData) {
-  $.post("/api/member", memberData).then(function(data) {
+function postMemberData(memberData, user_id) {
+  $.post("/api/member", {
+    user_id: user_id,
+    company: memberData.company,
+    last_name: memberData.last_name,
+    first_name: memberData.first_name,
+    business_phone: memberData.business_phone,
+    fax_number: memberData.fax_number,
+    address: memberData.address,
+    city: memberData.city,
+    state: memberData.state,
+    zip: memberData.zip,
+  }).then(function(data) {
     
     // If there's an error, handle it by throwing up a bootstrap alert
   }).catch(handleLoginErr);

@@ -88,7 +88,7 @@ module.exports = function(app) {
   app.post("/api/member", function(req, res) {
 
     db.members.create({
-      user_id: req.user.id,
+      user_id: req.user_id,
       company: req.company,
       last_name: req.last_name,
       first_name: req.first_name,
