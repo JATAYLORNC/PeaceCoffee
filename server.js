@@ -18,13 +18,12 @@ app.use(bodyParser.json());
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
-
 // We need to use sessions to keep track of our user's login status
 app.use(session(
   { 
     secret: "keyboard cat", 
-    resave: true, 
-    saveUninitialized: true 
+    resave: false, 
+    saveUninitialized: false 
   }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -32,9 +31,6 @@ app.use(passport.session());
 //define engine for handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-
-//Models
-
 
 // Routes
 // =============================================================
