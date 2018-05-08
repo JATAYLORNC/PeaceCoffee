@@ -34,7 +34,8 @@ module.exports = function(app) {
     db.User.create({
       email: req.body.email,
       password: req.body.password
-    }).then(function() {
+    }).then(function(user) {
+      res.json(user);
       res.redirect(307, "/api/login");
     }).catch(function(err) {
       console.log(err);
