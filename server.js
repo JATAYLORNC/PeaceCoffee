@@ -9,7 +9,7 @@ var path = require("path");
 //create instance of express server and define port
 var app = express();
 var port = process.env.PORT || 3000;
-// var exphbs = require("express-handlebars");
+var exphbs = require("express-handlebars");
 
 // Parse application/x-www-form-urlencoded and json
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,8 +30,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //define engine for handlebars
-// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// app.set("view engine", "handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 //Models
 
