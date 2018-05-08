@@ -35,6 +35,11 @@ products.associate = function(models) {
     }),
     products.hasMany(models.order_summary, {
       onDelete: "cascade"
+    }), 
+    products.belongsTo(models.members, {
+      foreignKey: {
+      allowNull: false
+      }
     })
   };
 
