@@ -66,6 +66,25 @@ module.exports = function(app) {
     }
   });
 
+  app.get("/api/product/:id", function(req, res) {
+    
+    var id = req.params.id;
+
+    db.products.findAll({
+      include: [ db.User ],
+      where: ['id']
+    }).then(function(productdata) {
+
+      //define object to render to view handlebars
+      var hbsObject = {
+        products: productdata
+      };
+
+      //render the object to index.handlebars
+      res.render("orderProduct", hbsObject);
+    });
+  });
+
   app.post("/api/member", function(req, res) {
 
 

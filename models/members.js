@@ -96,7 +96,10 @@ members.associate = function(models) {
     }),
     members.hasMany(models.order_summary, {
         onDelete: "cascade"
-      })
+      }),
+    members.hasMany(models.products, {
+    onDelete: "cascade"
+    })
   };
 
   return members;

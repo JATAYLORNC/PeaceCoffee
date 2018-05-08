@@ -38,12 +38,9 @@ module.exports = function(app) {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, function(req, res) {
-    console.log(req.user);
 
     //define object to render to view handlebars
     var hbsObject = req.user;
-
-    console.log(hbsObject)
 
     //render the object to index.handlebars
     res.render("members", hbsObject);
@@ -57,21 +54,17 @@ module.exports = function(app) {
     res.redirect("/");
   });
   
-  app.get("/payments", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/payments.html"));
-  });
+  // app.get("/payments", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/payments.html"));
+  // });
   
-  app.get("/inventory", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/inventory.html"));
-  });
+  // app.get("/inventory", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/inventory.html"));
+  // });
   
-  app.get("/orders", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/orders.html"));
-  });
-
-  app.get("/signup", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
-  });
+  // app.get("/signup", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/signup.html"));
+  // });
   
   // app.get("*", function(req, res) {
   //   res.sendFile(path.join(__dirname, "../public/homepage.html"));
