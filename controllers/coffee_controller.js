@@ -87,6 +87,24 @@ module.exports = function(app) {
 
   app.post("/api/member", function(req, res) {
 
+    db.members.create({
+      user_id: req.user.id,
+      company: req.company,
+      last_name: req.last_name,
+      first_name: req.first_name,
+      business_phone: req.business_phone,
+      fax_number: req.fax_number,
+      address: req.address,
+      city: req.city,
+      state: req.state,
+      zip: req.zip,
+    }).then(function(member) {
+      res.json(member);
+    }).catch(function(err) {
+      console.log(err);
+      res.json(err);
+      // res.status(422).json(err.errors[0].message);
+    });
 
   });
 
