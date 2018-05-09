@@ -76,15 +76,19 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/api/product/:id", function(req, res) {
-    var id = req.params.id;
+  app.get("/api/products/:id", function(req, res) {
 
-    db.products
-      .findAll({
-        include: [db.User],
-        where: ["id"]
+    var id=req.params.id;
+
+    db.products.findAll({ 
+      include: [db.User], 
+      where: [{
+        userId: id
+      }]
       })
       .then(function(productdata) {
+
+        console.log(productdata.userId)
         //define object to render to view handlebars
         var hbsObject = {
           products: productdata
