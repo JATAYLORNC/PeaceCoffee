@@ -9,12 +9,18 @@ var path = require("path");
 
 var db = require("../models");
 
+//Getting current date:
+var moment = require('moment');
+var currentDate = moment().format("YYYY-MM-DD");
+var nextYear = moment().add(1, "years").format("YYYY-MM-DD");
+console.log(currentDate, nextYear);
+
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    console.log("hello");
+
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
@@ -25,7 +31,7 @@ module.exports = function(app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", function(req, res) {
-    console.log(req.body);
+
     db.User.create({
       email: req.body.email,
       password: req.body.password,
@@ -38,13 +44,14 @@ module.exports = function(app) {
       city: req.body.city,
       state: req.body.state,
       zip: req.body.zip,
-      membership_start_date: req.body.membership_start_date,
-      membership_paid_date: req.body.membership_paid_date,
-      membership_renewal_date: req.body.membership_renewal_date,
-      membership_end_date: req.body.membership_end_date,
+      membership_start_date: currentDate,
+      membership_paid_date: currentDate,
+      membership_renewal_date: nextYear,
+      membership_end_date: nextYear,
       user_type: req.body.user_type
     })
       .then(function() {
+
         res.redirect(307, "/api/login");
       })
       .catch(function(err) {
