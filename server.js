@@ -19,6 +19,15 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // We need to use sessions to keep track of our user's login status
+<<<<<<< HEAD
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: true,
+    saveUninitialized: true
+  })
+);
+=======
 app.use(session(
 
   {
@@ -27,6 +36,7 @@ app.use(session(
     saveUninitialized: false
 
   }));
+>>>>>>> 13304a8f8aa376454166ed7202a470927d4da645
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -41,7 +51,7 @@ var apiRoute = require("./controllers/coffee_controller.js")(app);
 // require("./controllers/auth_controller.js")(app);
 
 //sync the models
-db.sequelize.sync({force: false}).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
   //listen on port
   app.listen(port, function() {
     console.log("App listening on PORT " + port);
