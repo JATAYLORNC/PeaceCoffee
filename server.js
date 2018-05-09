@@ -20,17 +20,12 @@ app.use(express.static("public"));
 
 // We need to use sessions to keep track of our user's login status
 app.use(session(
-<<<<<<< HEAD
+
   {
     secret: "keyboard cat",
-    resave: true,
-    saveUninitialized: true
-=======
-  { 
-    secret: "keyboard cat", 
-    resave: false, 
-    saveUninitialized: false 
->>>>>>> d8f48456c8d24fe0777d8b5785ac2fe29ccd4a09
+    resave: false,
+    saveUninitialized: false
+
   }));
 app.use(passport.initialize());
 app.use(passport.session());
