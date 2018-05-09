@@ -12,16 +12,20 @@ $(document).ready(function() {
   var cityInput = $("#city");
   var stateInput = $("#state");
   var zipInput = $("#zip");
+  var userTypeInput = $("#user-type");
+
+  //Getting current date:
+  var moment = require('moment');
+  var currentDate = moment().format("YYYY-MM-DD");
+  var nextYear = moment().add(1, "years").format("YYYY-MM-DD");
+  console.log(currentDate, nextYear);
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", function(event) {
     event.preventDefault();
     var userData = {
       email: emailInput.val().trim(),
-      password: passwordInput.val().trim()
-    };
-
-    var memberData = {
+      password: passwordInput.val().trim(),
       company: companyInput.val().trim(),
       last_name: lastNameInput.val().trim(),
       first_name: firstNameInput.val().trim(),
@@ -31,25 +35,36 @@ $(document).ready(function() {
       city: cityInput.val().trim(),
       state: stateInput.val().trim(),
       zip: zipInput.val().trim(),
-    }
+      membership_start_date: currentDate,
+      membership_paid_date: currentDate,
+      membership_renewal_date: nextYear,
+      membership_end_date: nextYear,
+      user_type: userTypeInput.val()
+    };
 
     if (!userData.email || !userData.password) {
       return;
     }
     // If we have an email and password, run the signUpUser function
-    signUpUser(userData.email, userData.password, memberData);
+    signUpUser(userData);
     emailInput.val("");
     passwordInput.val("");
-
+    company: companyInput.val(""),
+    lastNameInput.val(""),
+    firstNameInput.val(""),
+    phoneInput.val(""),
+    faxInput.val(""),
+    addressInput.val(""),
+    cityInput.val(""),
+    stateInput.val(""),
+    zipInput.val("")
   });
 
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
-  function signUpUser(email, password, memberData) {
-    $.post("/api/signup", {
-      email: email,
-      password: password
-    }).then(function(data) {
+  function signUpUser(userData) {
+    $.post("/api/signup", userData)
+    .then(function(data) {
 
       window.location.replace(data);
       // If there's an error, handle it by throwing up a bootstrap alert
@@ -61,21 +76,3 @@ $(document).ready(function() {
     $("#alert").fadeIn(500);
   }
 });
-
-function postMemberData(memberData, user_id) {
-  $.post("/api/member", {
-    user_id: user_id,
-    company: memberData.company,
-    last_name: memberData.last_name,
-    first_name: memberData.first_name,
-    business_phone: memberData.business_phone,
-    fax_number: memberData.fax_number,
-    address: memberData.address,
-    city: memberData.city,
-    state: memberData.state,
-    zip: memberData.zip,
-  }).then(function(data) {
-    
-    // If there's an error, handle it by throwing up a bootstrap alert
-  }).catch(handleLoginErr);
-}
