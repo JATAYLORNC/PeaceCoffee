@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="page-header">
+    <h1>Peace Coffee Member Payments</h1>
+
+  </div>
+  <!-- <h4>Welcome to the Peace Coffee Partnership homepage.</h4>       -->
+  <p>Here you will find the links necessary to manage your account, payments and orders. </p>
+  <hr>
+
+
+
+  <h4>Here is a list of all your past payments</h4>
+  <br>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Products Ordered</th>
+        <th scope="col">Sale Total</th>
+        <th scope="col">Due Date</th>
+        <th scope="col">Paid</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each order}} {{> order-block}} {{/each}}
+    </tbody>
+
+  </table>
+  <br>
+
+  <h4>Here is a list of all your upcomming payments</h4>
+  <br>
+  <div id="paymentDiv"></div>
+
+  <div id="links">Navigation Links
+    <br>
+    <button type="submit" onclick="" id="Submit">
+      <a href="/">Home Page</a>
+    </button>
+    </span>
+    <br>
+    <br>
+    <button type="submit" onclick="" id="Submit">
+      <a href="/members">Members Page</a>
+    </button>
+    </span>
+    <br>
+    <br>
+  </div>
+
+
+
+</div>
