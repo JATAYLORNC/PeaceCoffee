@@ -29,8 +29,7 @@ module.exports = function(app) {
       email: req.body.email,
       password: req.body.password
     })
-      .then(function(user) {
-        res.json(user);
+      .then(function() {
         res.redirect(307, "/api/login");
       })
       .catch(function(err) {
@@ -38,12 +37,6 @@ module.exports = function(app) {
         res.json(err);
         // res.status(422).json(err.errors[0].message);
       });
-  });
-
-  // Route for logging user out
-  app.get("/logout", function(req, res) {
-    req.logout();
-    res.redirect("/");
   });
 
   // Route for getting some data about our user to be used client side

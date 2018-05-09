@@ -22,13 +22,100 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [0, 25]
       }
-    }
-  }, {
-    //don't include any timestamp columns in the table
-    timestamps: false
+    },
+
+    company: {
+      type: DataTypes.STRING,
+          validate: {
+          len: [1, 100]
+          }  
+      },
+  
+      last_name: {
+      type: DataTypes.STRING,
+          validate: {
+          len: [1, 50]
+          }  
+      },
+  
+      first_name: {
+      type: DataTypes.STRING,
+          validate: {
+          len: [1, 50]
+          }  
+      },
+  
+      business_phone: {
+      type: DataTypes.STRING,
+          validate: {
+          len: [1, 15]
+          }  
+      },
+  
+      fax_number: {
+      type: DataTypes.STRING,
+          validate: {
+          len: [1, 15]
+          }  
+      },
+  
+      address: {
+      type: DataTypes.STRING,
+          validate: {
+          len: [1, 100]
+          }  
+      },
+  
+      city: {
+      type: DataTypes.STRING,
+          validate: {
+          len: [1, 50]
+          }  
+      },
+  
+      state: {
+      type: DataTypes.STRING,
+          validate: {
+          len: [1, 2]
+          }  
+      },
+  
+      zip: {
+      type: DataTypes.STRING,
+          validate: {
+          len: [1, 8]
+          }  
+      },
+  
+      membership_start_date: {
+      type: DataTypes.DATE
+      },
+      
+      membership_paid_date: {
+      type: DataTypes.DATE
+      },
+  
+      membership_renewal_date: {
+      type: DataTypes.DATE
+      },
+  
+      membership_end_date: {
+      type: DataTypes.DATE
+      },
+
+      user_type: {
+        type: DataTypes.STRING,
+        validate: {
+        len: [1, 2]
+        }  
+    },
+
+  },{
+  
+  timestamps: false
   });
 
-  // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
+ // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
   };
@@ -40,12 +127,13 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   User.associate = function(models) {
-        User.hasOne(models.members, {
+        User.hasMany(models.order_summary, {
         onDelete: "cascade"
     }),
-        User.hasOne(models.supplier, {
-          onDelete: "cascade"
-        })
-    };
+      User.hasMany(models.products, {
+      onDelete: "cascade"
+  })
+
+  };
   return User;
 };
