@@ -12,16 +12,11 @@ $(document).ready(function() {
   var cityInput = $("#city");
   var stateInput = $("#state");
   var zipInput = $("#zip");
-  var userTypeInput = $("#user-type");
-
-  //Getting current date:
-  var moment = require('moment');
-  var currentDate = moment().format("YYYY-MM-DD");
-  var nextYear = moment().add(1, "years").format("YYYY-MM-DD");
-  console.log(currentDate, nextYear);
+  var userTypeInput = $("#user_type");
+  
 
   // When the signup button is clicked, we validate the email and password are not blank
-  signUpForm.on("submit", function(event) {
+  $("#signup-button").on("click", function(event) {
     event.preventDefault();
     var userData = {
       email: emailInput.val().trim(),
@@ -35,10 +30,6 @@ $(document).ready(function() {
       city: cityInput.val().trim(),
       state: stateInput.val().trim(),
       zip: zipInput.val().trim(),
-      membership_start_date: currentDate,
-      membership_paid_date: currentDate,
-      membership_renewal_date: nextYear,
-      membership_end_date: nextYear,
       user_type: userTypeInput.val()
     };
 
