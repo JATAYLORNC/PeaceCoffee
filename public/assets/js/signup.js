@@ -28,7 +28,7 @@ $(document).ready(function() {
       fax_number: faxInput.val().trim(),
       address: addressInput.val().trim(),
       city: cityInput.val().trim(),
-      state: stateInput.val().trim(),
+      state: stateInput.val(),
       zip: zipInput.val().trim(),
       user_type: userTypeInput.val()
     };
