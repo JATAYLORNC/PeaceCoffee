@@ -63,12 +63,7 @@ order_summary.associate = function(models) {
     order_summary.belongsTo(models.products, {
     }),
     order_summary.belongsTo(models.User, {
-      onDelete: "cascade",
-      foreignKey: {
-      allowNull: false
-      }
     })
-
   };
 
   return order_summary;
