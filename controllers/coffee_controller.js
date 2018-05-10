@@ -111,6 +111,34 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/order", function(req, res) {
+
+    console.log("/api/order post hit");
+    var orderData = req.orderData;
+    var productData = orderData.productData;
+
+    console.log(orderData, productData);
+
+    for(i=0; i<productData.length; i++) {
+
+      db.order_summary
+        .create({
+          pounds: productData.pounds,
+          productId: productData.productId,
+          UserId: orderData.UserId
+        })
+        .then(function() {
+          console.log("order_summary post successful");
+          res.json("/order_summary");
+        })
+        .catch(function(err) {
+          console.log(err);
+          res.json(err);
+          // res.status(422).json(err.errors[0].message);
+        });
+      }
+    });
+
   app.post("/api/member", function(req, res) {
     db.members
       .create({
@@ -134,6 +162,8 @@ module.exports = function(app) {
         // res.status(422).json(err.errors[0].message);
       });
   });
+
+
 
   app.post("/api/customer", function(req, res) {});
 
