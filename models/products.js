@@ -31,14 +31,10 @@ products.associate = function(models) {
     // Associating Author with Posts
     // When an Author is deleted, also delete any associated Posts
     products.belongsTo(models.User, {
-      onDelete: "cascade"
     }),
-    products.belongsTo(models.order_summary, {
+    products.hasMany(models.order_summary, {
       onDelete: "cascade",
-      foreignKey: {allowNull: false
-      }
     })
-
   };
 
     return products;
