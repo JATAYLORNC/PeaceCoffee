@@ -88,7 +88,7 @@ module.exports = function(app) {
       })
       .then(function(productdata) {
 
-        console.log(productdata.userId)
+        console.log(productdata[0].UserId);
         //define object to render to view handlebars
         var hbsObject = {
           products: productdata
