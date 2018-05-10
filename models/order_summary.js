@@ -24,6 +24,11 @@ module.exports = function(sequelize, DataTypes) {
 		type: DataTypes.DATE
     },
 
+   pounds: {
+    type: DataTypes.DECIMAL(10,2),
+        allowNull: false
+    },
+
     price: {
 		type: DataTypes.DECIMAL(10,2),
         allowNull: false
