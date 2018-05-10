@@ -1,45 +1,56 @@
 <div class="container">
 
   <div>
-  <br>
+    <br>
     <span>
       <a href="/logout">
-      <button type = "button">Logout</button></span><br><br>
-      </a>
+        <button type="button">Logout</button>
+    </span>
+    <br>
+    <br>
+    </a>
   </div>
 
   <div class="page-header">
-    <h1>Peace Coffee Member Access</h1>      
+    <h1>Peace Coffee Member Access</h1>
   </div>
-  <h4>Welcome to the Peace Coffee Member homepage.</h4>      
+  <h4>Welcome to the Peace Coffee Member homepage.</h4>
   <p>Here you will find the links necessary to make payments and place orders. </p>
- <hr>
+  <hr>
 
-
-  <span><h5> View past payment history and upcoming payments</h5><span>
 
   <span>
-  <a href="/api/payments:{{id}}">
-  <button type = "button"  data-id="{{id}}" class="managePayments">Manage Payments</button><br><br>
-  </a>
+    <h5> View past payment history and upcoming payments</h5>
+    <span>
 
-  
+      <span>
+        <a href="/api/payments/{{id}}">
+          <button type="button" data-id="{{id}}" class="managePayments">Manage Payments</button>
+          <br>
+          <br>
+        </a>
 
 
 
-  <!-- <span><h5> View current inventory</h5><span>
+
+
+        <!-- <span><h5> View current inventory</h5><span>
   <span>  
     <a href="inventory">
   <button type = "button" onclick="" id="viewInventory"><a href="/inventory">View Inventory</a></button></span><br><br>
 </a> -->
 
 
-  <span><h5> Order Coffee and Product</h5><span>
-  <a href="/api/products/{{id}}">
-    <button type = "button" data-id="{{id}}" class="orderProduct">Order Product</button><br><br>
-  </a>
+        <span>
+          <h5> Order Coffee and Product</h5>
+          <span>
+            <a href="/api/products/{{id}}">
+              <button type="button" data-id="{{id}}" class="orderProduct">Order Product</button>
+              <br>
+              <br>
+            </a>
 
-      
+
 </div>
 
 <!-- Custom scripts for login -->
