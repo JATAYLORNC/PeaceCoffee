@@ -6,20 +6,20 @@
 --  scheduled_reorder_date		date
 --  );
 
--- insert into products
--- (product_name, pounds, price_per_pound, scheduled_reorder_date)
--- values
--- ('Breakfast Blend', 50, 3.99, '2018-06-25');
+insert into products
+(product_name, pounds, price_per_pound, scheduled_reorder_date, UserId)
+values
+('Breakfast Blend', 50, 3.99, '2018-06-25', 1);
 
--- insert into products
--- (product_name, pounds, price_per_pound, scheduled_reorder_date)
--- values
--- ('Breakfast Blend Decaf', 50, 4.50, '2018-06-15');
+insert into products
+(product_name, pounds, price_per_pound, scheduled_reorder_date, UserId)
+values
+('Breakfast Blend Decaf', 50, 4.50, '2018-06-15', 1);
 
--- insert into products
--- (product_name, pounds, price_per_pound, scheduled_reorder_date)
--- values
--- ('Cinnamon Vanilla', 30, 6.99, '2018-07-01');
+insert into products
+(product_name, pounds, price_per_pound, scheduled_reorder_date, UserId)
+values
+('Cinnamon Vanilla', 30, 6.99, '2018-07-01', 1);
 
 -- insert into products
 -- (product_name, pounds, price_per_pound, scheduled_reorder_date)
@@ -45,6 +45,8 @@
 -- (product_name, pounds, price_per_pound, scheduled_reorder_date)
 -- values
 -- ('French Vanilla Decaf', 15, 4.50, '2018-06-15');
+
+select * from products;
 
 
 
