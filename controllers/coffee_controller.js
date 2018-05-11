@@ -131,11 +131,6 @@ module.exports = function(app) {
       var coop_fee = parseFloat((total_price * 0.01).toFixed(2));
       var sales_total = (total_price + tax + coop_fee).toFixed(2);
 
-      console.log(total_price);
-      console.log(tax);
-      console.log(coop_fee);
-      console.log(sales_total);
-
       db.order_summary
         .create({
           pounds: pounds,
@@ -147,8 +142,8 @@ module.exports = function(app) {
           UserId: UserId
         })
         .then(function() {
-          console.log("order_summary post successful");
-          res.json("/order_summary");
+
+          res.redirect("/order_summary");
         })
         .catch(function(err) {
           console.log(err);
