@@ -25,34 +25,31 @@ $(document).ready(function() {
 
     for(i=0; i<productId.length; i++) {
 
-      var poundReference = i+1
+      var poundReference = i+1;
       poundReference = "p" + poundReference;
 
       var priceReference = i+1
-      priceReference = "price" + priceReference
+      priceReference = "price" + priceReference;
 
-      var productId = i+1;
+      var pid = i+1;
 
       var poundOrdered = $("#" + poundReference).val();
+
+      $("#" + poundReference).val(0);
 
       var price = $("#" + priceReference).text();
 
       if(poundOrdered != null) {
 
         productOrderData[i] = {
-          productId: productId, 
+          productId: pid, 
           price: price,
           pounds: poundOrdered    
         }
-
-      console.log(productOrderData);
-
       }
-
-      orderData.productData = productOrderData;
     }
 
-    console.log(orderData);
+      orderData.productData = productOrderData;
     
 
     placeOrder(orderData);
@@ -65,6 +62,8 @@ $(document).ready(function() {
 
     $.post("/api/order",orderData)
     .then(function(data) {
+
+      window.location.replace("/members");
 
       // If there's an error, handle it by throwing up a bootstrap alert
     }).catch(handleLoginErr);
