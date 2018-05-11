@@ -1,15 +1,9 @@
 $(document).ready(function() {
-  
-  console.log("javascript file link is correct");
 
   // When the signup button is clicked, we validate the email and password are not blank
-  $("#order-button").on("submit", function(event) {
-
-    alert("button reference is correct");
+  $("#order-button").on("click", function(event) {
 
     event.preventDefault();
-
-    alert("page did not reload");
     
     var UserId = $(this).data("id");
 
@@ -20,29 +14,46 @@ $(document).ready(function() {
     var productId=[];
     var productOrderData = {};
 
-    $('th').each(function(product){
-      var id = $(product).data('pid');
+    $('tr').each(function(product){
+
+      var id = $(this).attr("data-pid");
 
       if(id) {
         productId.push(id);
       }
     });
 
-    for(i=0; i=productId.length; i++) {
+    for(i=0; i<productId.length; i++) {
 
-      var poundOrdered = $("#p" + i).val();
+      var poundReference = i+1
+      poundReference = "p" + poundReference;
+
+      var priceReference = i+1
+      priceReference = "price" + priceReference
+
+      var productId = i+1;
+
+      var poundOrdered = $("#" + poundReference).val();
+
+      var price = $("#" + priceReference).text();
 
       if(poundOrdered != null) {
 
         productOrderData[i] = {
-          productId: i, 
+          productId: productId, 
+          price: price,
           pounds: poundOrdered    
         }
+
+      console.log(productOrderData);
 
       }
 
       orderData.productData = productOrderData;
     }
+
+    console.log(orderData);
+    
 
     placeOrder(orderData);
 
@@ -51,10 +62,10 @@ $(document).ready(function() {
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
   function placeOrder(orderData) {
-    $.post("/api/order", userData)
+
+    $.post("/api/order",orderData)
     .then(function(data) {
 
-      window.location.replace(data);
       // If there's an error, handle it by throwing up a bootstrap alert
     }).catch(handleLoginErr);
   }

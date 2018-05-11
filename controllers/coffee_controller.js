@@ -112,19 +112,38 @@ module.exports = function(app) {
 
   app.post("/api/order", function(req, res) {
 
-    console.log("/api/order post hit");
-    var orderData = req.orderData;
-    var productData = orderData.productData;
+    console.log(req.body);
+    // var orderData = req.body
+    // var productData = orderData.productData;
 
-    console.log(orderData, productData);
+    var UserId = req.body.UserId;
+
+    var productData = req.body.productData;
 
     for(i=0; i<productData.length; i++) {
 
+      var pounds = productData[i].pounds;
+      var productId = productData[i].productId;
+      var price = productData[i].price;
+      var total_price = parseFloat((parseFloat(price) * parseInt(pounds)).toFixed(2));
+      var tax = parseFloat((total_price * 0.07).toFixed(2));
+      var coop_fee = parseFloat((total_price * 0.01).toFixed(2));
+      var sales_total = (total_price + tax + coop_fee).toFixed(2);
+
+      console.log(total_price);
+      console.log(tax);
+      console.log(coop_fee);
+      console.log(sales_total);
+
       db.order_summary
         .create({
-          pounds: productData.pounds,
-          productId: productData.productId,
-          UserId: orderData.UserId
+          pounds: pounds,
+          price: price,
+          coop_fee: coop_fee,
+          tax: tax,
+          sales_total: sales_total,
+          productId: productId,
+          UserId: UserId
         })
         .then(function() {
           console.log("order_summary post successful");
