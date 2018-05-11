@@ -1,30 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
  //define the order_summary data model
  var order_summary = sequelize.define("order_summary", {
-    
-    priority: {
-		type: DataTypes.STRING,
-        validate: {
-        len: [1, 15]
-        }  
-    },
 
-    status: {
-		type: DataTypes.STRING,
-        validate: {
-        len: [1, 15]
-        }  
-    },
-
-    start_date: {
-		type: DataTypes.DATE
-    },
-
-    due_date: {
-		type: DataTypes.DATE
-    },
-
-   pounds: {
+    pounds: {
     type: DataTypes.DECIMAL(10,2),
         allowNull: false
     },
@@ -64,7 +42,7 @@ timestamps: false
 
 
 order_summary.associate = function(models) {
-    
+
     order_summary.belongsTo(models.products, {
     }),
     order_summary.belongsTo(models.User, {
