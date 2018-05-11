@@ -1,16 +1,4 @@
 <div class="container">
-
-  <div>
-    <br>
-    <span>
-      <a href="/logout">
-        <button type="button">Logout</button>
-    </span>
-    <br>
-    <br>
-    </a>
-  </div>
-
   <div class="page-header">
     <h1>Peace Coffee Member Access</h1>
   </div>
@@ -18,39 +6,26 @@
   <p>Here you will find the links necessary to make payments and place orders. </p>
   <hr>
 
-
   <span>
     <h5> View past payment history and upcoming payments</h5>
     <span>
-
       <span>
-        <a href="/api/payments/{{id}}">
-          <button type="button" data-id="{{id}}" class="managePayments">Manage Payments</button>
-          <br>
-          <br>
+        <a href="/api/payments/{{id}}" class="btn btn-members managePayments" data-id="{{id}}">
+          <i class="fa fa-usd" aria-hidden="true"></i> Manage Payments
         </a>
-
-
-
-
-
-        <!-- <span><h5> View current inventory</h5><span>
-  <span>  
-    <a href="inventory">
-  <button type = "button" onclick="" id="viewInventory"><a href="/inventory">View Inventory</a></button></span><br><br>
-</a> -->
-
-
+      </span>
+      <br>
+      <br>
+      <span>
+        <h5> Order Coffee and Products</h5>
         <span>
-          <h5> Order Coffee and Product</h5>
-          <span>
-            <a href="/api/products/{{id}}">
-              <button type="button" data-id="{{id}}" class="orderProduct">Order Product</button>
-              <br>
-              <br>
-            </a>
-
-
+          <a href="/api/products/{{id}}" class="btn btn-members orderProduct" data-id="{{id}}">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Order Product
+          </a>
+        </span>
+      </span>
+    </span>
+  </span>
 </div>
 
 <!-- Custom scripts for login -->
