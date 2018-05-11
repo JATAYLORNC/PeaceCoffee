@@ -1,9 +1,9 @@
-<tr>
-  <th scope="row" data-pid={{id}}>{{id}}</th>
+<tr data-pid={{id}}>
+  <td scope="row">{{id}}</td>
   <td>{{product_name}}</td>
-  <td>{{price_per_pound}}</td>
+  <td id="price{{id}}">{{price_per_pound}}</td>
   <td>
-    <select class="form-control" data-pnds={{id}}>
+    <select class="form-control" id="p{{id}}">
       <option selected disabled>Select Amount</option>
       <option value="5">5</option>
       <option value="10">10</option>

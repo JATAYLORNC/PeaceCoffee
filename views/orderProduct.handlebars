@@ -9,7 +9,7 @@
     <a class="btn btn-secondary dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Products
     </a>
-    <form class="order">
+    <div class="order">
       <div class="form-group">
         <label for="mId">Member ID</label>
         <input class="form-control" type="text" id="mId" value={{products.0.User.id}} readonly>
@@ -17,12 +17,10 @@
       <div class="form-group">
         <table class="table">
           <thead>
-            <tr>
               <th scope="col">Product ID</th>
               <th scope="col">Product</th>
               <th scope="col">Price Per Pound</th>
               <th scope="col">Pounds</th>
-            </tr>
           </thead>
           <tbody>
             {{#each products}}
@@ -31,8 +29,8 @@
           </tbody>
         </table>
       </div>
-        <button type = "submit" id="order-button" data-id="{{products.0.User.id}}" class="btn btn-default orderButton">Submit</button><br><br>
-  </form>
+        <button type = "button" id="order-button" data-id="{{products.0.User.id}}" class="btn btn-default orderButton">Submit</button><br><br>
+  </div>
   </div>
 </div>
 
