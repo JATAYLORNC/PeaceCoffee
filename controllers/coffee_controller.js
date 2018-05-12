@@ -172,6 +172,30 @@ module.exports = function(app) {
       });
   });
 
+  app.post("/api/contact", function(req, res) {
+    console.log("req.body", req.body);
+    console.log("req.body.name", req.body.name);
+    console.log("req.body.email", req.body.email);
+    console.log("req.body.phone", req.body.phone);
+    console.log("req.body.message", req.body.message);
+
+    db.contacts
+      .create({
+        name: req.body.name,
+        email: req.body.email,
+        phone: req.body.phone,
+        message: req.body.message
+      })
+      .then(function() {
+      console.log("posted to database");
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.json(err);
+        // res.status(422).json(err.errors[0].message);
+      });
+  });
+
   app.post("/api/customer", function(req, res) {});
 
   app.put("/api/member/:id", function(req, res) {});
