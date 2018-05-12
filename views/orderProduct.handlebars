@@ -1,25 +1,14 @@
 <div class="container">
   <div class="page-header">
-<<<<<<< HEAD
     <h1>Peace Coffee Member Orders</h1>
 
-=======
-  <h1>Peace Coffee Member Orders</h1>      
->>>>>>> 9ac27c789a551c909cddc0995a0c8be2f3772e48
   </div>
   <h4>Welcome to the Peace Coffee Member Orders page.</h4>
   <p>Here you will find a list of available products for purchace by Peace Coffee Co-Op members. </p>
   <hr>
   <div class="dropdown show">
-<<<<<<< HEAD
     <form class="order">
 
-=======
-    <a class="btn btn-secondary dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Products
-    </a>
-    <div class="order">
->>>>>>> 9ac27c789a551c909cddc0995a0c8be2f3772e48
       <div class="form-group">
         <label for="mId">Member ID</label>
         <input class="form-control" type="text" id="mId" value={{products.0.User.id}} readonly>
@@ -27,55 +16,22 @@
       <div class="form-group">
         <table class="table">
           <thead>
-              <th scope="col">Product ID</th>
-              <th scope="col">Product</th>
-              <th scope="col">Price Per Pound</th>
-              <th scope="col">Pounds</th>
+            <th scope="col">Product ID</th>
+            <th scope="col">Product</th>
+            <th scope="col">Price Per Pound</th>
+            <th scope="col">Pounds</th>
           </thead>
           <tbody>
-<<<<<<< HEAD
             {{#each products}} {{> product-block}} {{/each}}
           </tbody>
         </table>
       </div>
-
-      <button type="submit" class="btn btn-members">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Check Out
-      </button>
-    </form>
-
-
-
-
-
-
-
-
-
-
+      <button type="button" id="order-button" data-id="{{products.0.User.id}}" class="btn btn-default orderButton">Submit</button>
+      <br>
+      <br>
   </div>
-
-
-
-
-
-
-
-
-
 </div>
-=======
-            {{#each products}}
-              {{> product-block}}
-            {{/each}}
-          </tbody>
-        </table>
-      </div>
-        <button type = "button" id="order-button" data-id="{{products.0.User.id}}" class="btn btn-default orderButton">Submit</button><br><br>
-  </div>
-  </div>
 </div>
 
 <!-- Custom scripts for signup -->
 <script src="../../assets/js/orderProduct.js"></script>
->>>>>>> 9ac27c789a551c909cddc0995a0c8be2f3772e48

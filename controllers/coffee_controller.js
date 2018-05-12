@@ -10,9 +10,11 @@ var path = require("path");
 var db = require("../models");
 
 //Getting current date:
-var moment = require('moment');
+var moment = require("moment");
 var currentDate = moment().format("YYYY-MM-DD");
-var nextYear = moment().add(1, "years").format("YYYY-MM-DD");
+var nextYear = moment()
+  .add(1, "years")
+  .format("YYYY-MM-DD");
 console.log(currentDate, nextYear);
 
 module.exports = function(app) {
@@ -20,18 +22,16 @@ module.exports = function(app) {
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
     res.json("/members");
   });
 
-    // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
+  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", function(req, res) {
-
     db.User.create({
       email: req.body.email,
       password: req.body.password,
@@ -51,7 +51,6 @@ module.exports = function(app) {
       user_type: req.body.user_type
     })
       .then(function() {
-
         res.redirect(307, "/api/login");
       })
       .catch(function(err) {
@@ -77,17 +76,18 @@ module.exports = function(app) {
   });
 
   app.get("/api/products/:id", function(req, res) {
+    var id = req.params.id;
 
-    var id=req.params.id;
-
-    db.products.findAll({ 
-      include: [db.User], 
-      where: [{
-        userId: id
-      }]
+    db.products
+      .findAll({
+        include: [db.User],
+        where: [
+          {
+            userId: id
+          }
+        ]
       })
       .then(function(productdata) {
-
         //define object to render to view handlebars
         var hbsObject = {
           products: productdata
@@ -98,20 +98,19 @@ module.exports = function(app) {
       });
   });
 
-  app.get("/api/payment/:id", function(req, res) {
+  app.get("/api/payments/:id", function(req, res) {
     var id = req.params.id;
 
-    db.order_summary.findAll({ include: [db.User, db.products], where: ["id"] }).then(function(orderData) {
+    db.order_summary.findAll({ include: [db.User, db.products], where: [{ userId: id }] }).then(function(orderData) {
       //define object to render to view handlebars
       var hbsObject = { order: orderData };
 
       //render the object to index.handlebars
-      res.render("orderSummary", hbsObject);
+      res.render("payments.handlebars", hbsObject);
     });
   });
 
   app.post("/api/order", function(req, res) {
-
     console.log(req.body);
     // var orderData = req.body
     // var productData = orderData.productData;
@@ -120,8 +119,7 @@ module.exports = function(app) {
 
     var productData = req.body.productData;
 
-    for(i=0; i<productData.length; i++) {
-
+    for (i = 0; i < productData.length; i++) {
       var pounds = productData[i].pounds;
       var productId = productData[i].productId;
       var price = productData[i].price;
@@ -140,16 +138,15 @@ module.exports = function(app) {
           productId: productId,
           UserId: UserId
         })
-        .then(function() {
-        })
+        .then(function() {})
         .catch(function(err) {
           console.log(err);
           res.json(err);
           // res.status(422).json(err.errors[0].message);
         });
-      }
-      res.redirect("../../members");
-    });
+    }
+    res.redirect("../../members");
+  });
 
   app.post("/api/member", function(req, res) {
     db.members
@@ -174,8 +171,6 @@ module.exports = function(app) {
         // res.status(422).json(err.errors[0].message);
       });
   });
-
-
 
   app.post("/api/customer", function(req, res) {});
 
