@@ -130,9 +130,6 @@ module.exports = function(app) {
   });
 
   app.post("/api/order", function(req, res) {
-    console.log(req.body);
-    // var orderData = req.body
-    // var productData = orderData.productData;
 
     var UserId = req.body.UserId;
 
