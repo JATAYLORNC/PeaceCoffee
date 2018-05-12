@@ -15,7 +15,6 @@ var currentDate = moment().format("YYYY-MM-DD");
 var nextYear = moment()
   .add(1, "years")
   .format("YYYY-MM-DD");
-console.log(currentDate, nextYear);
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
