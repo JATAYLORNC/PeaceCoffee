@@ -109,6 +109,26 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/products/:id", function(req, res) {
+    var id = req.params.id;
+    
+    db.User.create({
+      product_name: req.body.product_name,
+      pounds: req.body.pounds,
+      price_per_pount: req.body.price_per_pound,
+      scheduled_reorder_date: req.body.scheduled_reorder_date,
+      UserId: id
+    })
+      .then(function() {
+        res.redirect("../../members");
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.json(err);
+        // res.status(422).json(err.errors[0].message);
+      });
+  });
+
   app.post("/api/order", function(req, res) {
     console.log(req.body);
     // var orderData = req.body
