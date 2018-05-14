@@ -33,5 +33,5 @@ Meleha Levine<br>
 
 ## RESOURCES
 
-View our Prezi <a href="http://prezi.com/6nqbqf5kkdol/?utm_campaign=share&utm_medium=copy">HERE</a>
+View our Prezi <a href="https://prezi.com/view/ekvpIA5nLlfhhS4ANghj/">HERE</a>
 
