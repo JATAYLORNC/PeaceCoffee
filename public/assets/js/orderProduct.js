@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
 
   // When the signup button is clicked, we validate the email and password are not blank
   $("#order-button").on("click", function(event) {
@@ -14,6 +14,8 @@ $(document).ready(function() {
     var productId=[];
     var productOrderData = {};
 
+    console.log(productOrderData);
+
     $('tr').each(function(product){
 
       var id = $(this).attr("data-pid");
@@ -23,30 +25,31 @@ $(document).ready(function() {
       }
     });
 
-    for(i=0; i<productId.length; i++) {
+    console.log(productOrderData);
 
-      var poundReference = i+1;
-      poundReference = "p" + poundReference;
 
-      var priceReference = i+1
-      priceReference = "price" + priceReference;
+    for(let i=0; i<productId.length; i++) {
 
-      var pid = i+1;
+      var ref="#" + i;
 
-      var poundOrdered = $("#" + poundReference).val();
+      var pid = $(ref).attr('data-pid');
 
-      $("#" + poundReference).val(0);
+      poundReference = "#p" + pid;
+      var poundOrdered = $(poundReference).val();
 
-      var price = $("#" + priceReference).text();
+      priceReference = "#price" + pid;
+      var price = $(priceReference).text();
 
-      if(poundOrdered != null) {
+      $(poundReference).val(0);
+
+      // if(poundOrdered != null) {
 
         productOrderData[i] = {
           productId: pid, 
           price: price,
           pounds: poundOrdered    
         }
-      }
+      // }
     }
 
       orderData.productData = productOrderData;
@@ -59,6 +62,7 @@ $(document).ready(function() {
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
   function placeOrder(orderData) {
+    console.log(orderData);
 
     $.post("/api/order",orderData)
     .then(function(data) {
