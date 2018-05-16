@@ -135,6 +135,8 @@ module.exports = function(app) {
 
     var productData = req.body.productData;
 
+    console.log(req.body, productData);
+
     for (i = 0; i < productData.length; i++) {
 
       var pounds = productData[i].pounds;
@@ -144,8 +146,6 @@ module.exports = function(app) {
       var tax = parseFloat((total_price * 0.07).toFixed(2));
       var coop_fee = parseFloat((total_price * 0.01).toFixed(2));
       var sales_total = (total_price + tax + coop_fee).toFixed(2);
-
-      console.log(pounds);
 
       db.order_summary
         .create({

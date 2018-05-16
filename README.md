@@ -19,6 +19,7 @@
 * Magnific-Popup
 * Node
 * Express
+* Passport
 * Sequelize
 * mySQL
 * Handlebars
