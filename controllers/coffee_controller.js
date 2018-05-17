@@ -74,6 +74,8 @@ module.exports = function(app) {
     }
   });
 
+  //route for getting product data specific to the user and rendering data to 
+  //handlebars order product page
   app.get("/api/products/:id", function(req, res) {
     var id = req.params.id;
 
@@ -92,11 +94,13 @@ module.exports = function(app) {
           products: productdata
         };
 
-        //render the object to index.handlebars
+        //render the object to orderProduct.handlebars
         res.render("orderProduct", hbsObject);
       });
   });
 
+  //route for getting order data specific to the user and rendering data to 
+  //handlebars payments page
   app.get("/api/payments/:id", function(req, res) {
     var id = req.params.id;
 
@@ -109,10 +113,23 @@ module.exports = function(app) {
     });
   });
 
+  //route for rendering  user id to handlebars add product page
+  app.get("/api/addProduct/:id", function(req, res) {
+    var id = req.params.id;
+
+    //define object to render to view handlebars
+    var hbsObject = { id: id };
+
+    //render the object to index.handlebars
+    res.render("addProduct.handlebars", hbsObject);
+  });
+
+  //route for posting order data to the order_summary table
+  //If successful, user is redirected to the members page
   app.post("/api/products/:id", function(req, res) {
     var id = req.params.id;
     
-    db.User.create({
+    db.order_summary.create({
       product_name: req.body.product_name,
       pounds: req.body.pounds,
       price_per_pount: req.body.price_per_pound,
@@ -129,13 +146,32 @@ module.exports = function(app) {
       });
   });
 
+  //route for posting new product data to the products table
+  app.post("/api/addProduct", function(req, res) {
+
+    UserId = req.body.UserId
+    db.products.create({
+      product_name: req.body.product_name,
+      pounds: req.body.pounds,
+      price_per_pound: req.body.price_per_pound,
+      scheduled_reorder_date: nextYear,
+      UserId: UserId
+    })
+      .then(function() {
+        res.redirect("../../members");
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.json(err);
+        // res.status(422).json(err.errors[0].message);
+      });
+  });
+
   app.post("/api/order", function(req, res) {
 
     var UserId = req.body.UserId;
 
     var productData = req.body.productData;
-
-    console.log(req.body, productData);
 
     for (i = 0; i < productData.length; i++) {
 
@@ -192,11 +228,6 @@ module.exports = function(app) {
   });
 
   app.post("/api/contact", function(req, res) {
-    console.log("req.body", req.body);
-    console.log("req.body.name", req.body.name);
-    console.log("req.body.email", req.body.email);
-    console.log("req.body.phone", req.body.phone);
-    console.log("req.body.message", req.body.message);
 
     db.contacts
       .create({
@@ -206,7 +237,7 @@ module.exports = function(app) {
         message: req.body.message
       })
       .then(function() {
-      console.log("posted to database");
+
       })
       .catch(function(err) {
         console.log(err);

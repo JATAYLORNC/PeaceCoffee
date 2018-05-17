@@ -40,7 +40,7 @@ $(document).ready(function() {
     signUpUser(userData);
     emailInput.val("");
     passwordInput.val("");
-    company: companyInput.val(""),
+    companyInput.val(""),
     lastNameInput.val(""),
     firstNameInput.val(""),
     phoneInput.val(""),
